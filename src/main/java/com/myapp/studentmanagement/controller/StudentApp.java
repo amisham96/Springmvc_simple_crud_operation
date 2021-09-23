@@ -17,6 +17,11 @@ public class StudentApp {
 	@Autowired
 	StudentService studentService;
 
+	@GetMapping("/")
+	public String indexPage() {
+		return "index";
+	}
+
 	@GetMapping("/students")
 	public String lisStudents(Model model) {
 		model.addAttribute("students", studentService.getAllStudent());
@@ -45,7 +50,7 @@ public class StudentApp {
 	@PostMapping("/students/{studentId}")
 	public String updateStudent(@PathVariable long studentId, @ModelAttribute("student") Student student, Model model) {
 		Student presentStudent = studentService.getStudentById(studentId);
-		System.out.println(studentId);
+
 		presentStudent.setStudentId(studentId);
 		presentStudent.setFirstName(student.getFirstName());
 		presentStudent.setLastName(student.getLastName());
@@ -54,7 +59,7 @@ public class StudentApp {
 		studentService.updateStudent(presentStudent);
 		return "redirect:/students";
 	}
-	
+
 	@GetMapping("/students/delete/{studentId}")
 	public String deleteStudent(@PathVariable Long studentId) {
 		studentService.deleteStudent(studentId);

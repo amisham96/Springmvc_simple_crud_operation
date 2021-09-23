@@ -30,15 +30,19 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" th:href="@{/students}">Student Management System</a>
+				<a class="navbar-brand" th:href="@{/students}">Student
+					Management System</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/}">Home</a></li>
+				</ul>
 				<ul class="nav navbar-nav">
 					<li><a th:href="@{/students}">Show Students</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a th:href="@{/students/new}"><span class="glyphicon glyphicon-user"></span>
-							Add New Student</a></li>
+					<li><a th:href="@{/students/new}"><span
+							class="glyphicon glyphicon-user"></span> Add New Student</a></li>
 				</ul>
 			</div>
 		</div>
@@ -49,8 +53,9 @@
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class="text-center">Update Existing Student</h1>
 				<div class="card-body">
-					<form action="#" th:action="@{/students/{studentId} (studentId=${student.studentId})}" th:object="${student}"
-						method="post">
+					<form action="#"
+						th:action="@{/students/{studentId} (studentId=${student.studentId})}"
+						th:object="${student}" method="post">
 						<div class="form-group">
 							<label>Student First Name</label> <input type="text"
 								name="firstName" th:field="*{firstName}"
